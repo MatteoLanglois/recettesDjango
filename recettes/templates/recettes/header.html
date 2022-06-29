@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'recettes/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'recettes/color.css' %}">
+<script src="https://kit.fontawesome.com/f0c5800638.js" crossorigin="anonymous"></script>
+
+<header>
+    <h1 class="title">Recettes</h1>
+    <button class="sandwich" onclick="document.getElementById('bar').style.display = 'block'"><i class="fa-solid fa-bars"></i></button>
+</header>
+<nav class="navbar" id="bar">
+    <button class="sandwich close" onclick="document.getElementById('bar').style.display = 'none'"><i class="fa-solid fa-times"></i></button>
+    <ul>
+        <li><a href="{% url 'recettes:index' %}"><i class="fa-solid fa-house"></i>Accueil</a></li>
+        <li><a href="{% url 'admin:index' %}"><i class="fa-solid fa-plus"></i>Ajouter une recette</a></li>
+        <li><button onclick="document.getElementById('search').style.display = 'block'"><i class="fa-solid fa-search"></i>Rechercher une recette</button></li>
+        <li style="display: none;" id="search" class="filter">
+            <button onclick="document.getElementById('search').style.display = 'none'" class="close cf"><i class="fa-solid fa-times"></i></button>
+            <form class="filtering" action="{% url 'recettes:search' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="search" placeholder="Rechercher une recette" required>
+                <button type="submit"><i class="fa-solid fa-search"></i></button>
+            </form>
+        </li>
+        <li><button onclick="document.getElementById('sorting').style.display = 'block'"><i class="fa-solid fa-filter"></i>Trier</button></li>
+        <li id="sorting" style="display: none;" class="filter">
+            <button onclick="document.getElementById('sorting').style.display = 'none'" class="close cf"><i class="fa-solid fa-times"></i></button>
+            <form class="filtering" action="{% url 'recettes:OrderList' 'title' %}" method="post">
+                {% csrf_token %}
+                <select name="filter">
+                    <option value="pub_date">Date de publication</option>
+                    <option value="title">Par nom</option>
+                </select>
+                <input type="submit" value="Trier">
+            </form>
+        </li>
+        <li><a href=""><i class="fa-solid fa-message"></i>A propos</a></li>
+    </ul>
+</nav>

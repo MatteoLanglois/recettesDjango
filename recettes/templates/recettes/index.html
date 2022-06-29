@@ -1,0 +1,11 @@
+{% include './header.html' %}
+
+<div class="cards">
+{% if recipes %}
+    {% for recipe in recipes %}
+        {% include 'recettes/card.html' with recipe=recipe %}
+    {% endfor %}
+{% else %}
+    <p>No recipes are available.</p>
+{% endif %}
+</div>

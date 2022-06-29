@@ -1,0 +1,14 @@
+<div class="card">
+    <h1>{{ recipe.title }}</h1>
+    {{ recipe.has_label_set.many_to_many.all }}
+    {% for tag in recipe.has_label_set.many_to_many.all %}
+        <div class="chip">
+            {{ tag }}
+        </div>
+    {% endfor %}
+    <div class="button_zone">
+        <a href="{% url 'recettes:detail' recipe.id %}">
+            <button class="btn-grad">Lire plus</button>
+        </a>
+    </div>
+</div>

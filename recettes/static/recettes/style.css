@@ -1,0 +1,167 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 5px;
+}
+
+a, a:hover, a:focus, a:active, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.title {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.chip {
+  display: inline-block;
+  padding: 0 25px;
+  height: 50px;
+  font-size: 18spx;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+  margin: 5px;
+}
+
+.chip i {
+  font-size: 25px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 -0.5em;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    min-height: 400px;
+    margin: auto;
+    text-align: center;
+    border-radius: 30pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 15px;
+}
+
+
+.btn-grad {
+    background-image: linear-gradient(to right, #56ab2f 0%, #a8e063  51%, #56ab2f  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 15pt;
+    display: block;
+    border: none;
+    outline: none;
+}
+
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.button_zone {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.sandwich {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 3em;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    transform: scale(1);
+    transition: transform 500ms ease-in-out;
+}
+
+.sandwich:hover i {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.navbar {
+    display: none;
+    height: 100%;
+    width: 350px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.navbar ul {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+}
+
+.navbar li {
+    margin: 10px 15px 10px -5px;
+}
+
+.navbar i {
+    margin: 10px;
+}
+
+.close {
+    font-size: 1.8em;
+    color: black;
+    cursor: pointer;
+    transition: color 500ms ease-in-out;
+}
+
+.close:hover {
+    color: red;
+}
+
+.navbar button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: color 500ms ease-in-out;
+    font-size: 1em;
+}
+
+.filtering {
+    height: auto;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.filtering input, .filtering select {
+    width: 80%;
+    margin-left: 10%;
+}
+
+
+.filter {
+    border-radius: 15px;
+    margin-right: 10px;
+}

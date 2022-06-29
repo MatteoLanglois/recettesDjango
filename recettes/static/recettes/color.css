@@ -1,0 +1,19 @@
+:root {
+    --color-primary: #a8e063;
+    --color-secondary: #F2E2CE;
+    --color-tertiary: #F2B680;
+    --color-quaternary: #8C583A;
+    --color-quinary: #F2F2F2;
+}
+
+html, .filter {
+    background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+.card, .navbar {
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+.chip {
+    background-color: var(--color-primary);
+}
