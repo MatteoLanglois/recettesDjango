@@ -14,15 +14,7 @@
         <li><a href="{% url 'recettes:index' %}"><i class="fa-solid fa-house"></i>Accueil</a></li>
         <li><a href="{% url 'admin:index' %}"><i class="fa-solid fa-plus"></i>Ajouter une recette</a></li>
         <li><button onclick="document.getElementById('search').style.display = 'block'"><i class="fa-solid fa-search"></i>Rechercher une recette</button></li>
-        <li style="display: none;" id="search" class="filter">
-            <button onclick="document.getElementById('search').style.display = 'none'" class="close cf"><i class="fa-solid fa-times"></i></button>
-            <form class="filtering" action="{% url 'recettes:search' %}" method="post">
-                {% csrf_token %}
-                <input type="text" name="search" placeholder="Rechercher une recette" required>
-                <button type="submit"><i class="fa-solid fa-search"></i></button>
-            </form>
-        </li>
-        <li><button onclick="document.getElementById('sorting').style.display = 'block'"><i class="fa-solid fa-filter"></i>Trier</button></li>
+        <li><button onclick="document.getElementById('sorting').style.display = 'block'"><i class="fa-solid fa-arrow-down-wide-short"></i>Trier</button></li>
         <li id="sorting" style="display: none;" class="filter">
             <button onclick="document.getElementById('sorting').style.display = 'none'" class="close cf"><i class="fa-solid fa-times"></i></button>
             <form class="filtering" action="{% url 'recettes:OrderList' 'title' %}" method="post">
@@ -34,6 +26,21 @@
                 <input type="submit" value="Trier">
             </form>
         </li>
+        <li><button onclick="document.getElementById('FilterForm').style.display ='block'"><i class="fa-solid fa-filter"></i>Filtrer</button></li>
         <li><a href=""><i class="fa-solid fa-message"></i>A propos</a></li>
     </ul>
 </nav>
+<div class="option">
+    <form action="{% url 'recettes:index' %}" method="post" id="FilterForm" style="display: none;">
+    {% csrf_token %}
+        {% for tag in tags %}
+            <input type="checkbox" name="filter" value="{{ tag }}">{{ tag }}<br>
+        {% endfor %}
+        <input type="submit" value="Filtrer">
+    </form>
+    <form action="{% url 'recettes:index' %}" method="post" id="search" style="display: none;">
+        {% csrf_token %}
+        <input type="text" name="search" placeholder="Rechercher une recette">
+        <button type="submit"><i class="fa-solid fa-search"></i></button>
+    </form>
+</div>
