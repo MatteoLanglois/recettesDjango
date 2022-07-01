@@ -21,10 +21,9 @@ a, a:hover, a:focus, a:active, a:visited {
   display: inline-block;
   padding: 0 25px;
   height: 50px;
-  font-size: 18spx;
+  font-size: 18px;
   line-height: 50px;
   border-radius: 25px;
-  background-color: #f1f1f1;
   margin: 5px;
 }
 
@@ -152,16 +151,67 @@ a, a:hover, a:focus, a:active, a:visited {
     height: auto;
     margin: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.filtering input, .filtering select {
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+}
+
+
+.option {
     width: 80%;
     margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    padding: 10px;
 }
 
+.option form {
+    border-radius: 30px;
+    padding: 30px;
+    width: 25%;
+    display: flex;
+    flex-direction: row,
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 50, 0.2);
+}
 
-.filter {
-    border-radius: 15px;
+.option input {
+    background-color: #f1f1f1;
+    outline: none;
+    border: none;
+}
+
+.optionSubmit {
+    height: 50px;
+    width: 80px;
+    outline: none;
+}
+
+.optionSelect {
+    height: 50px;
+    width: auto;
+}
+
+.optionSearch {
+    height: 50px;
+    width: 80%;
+}
+
+.optionCheck {
     margin-right: 10px;
+}
+
+.filtering .chip {
+    max-width: 40%;
+    min-width: 20%;
 }

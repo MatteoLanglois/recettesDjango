@@ -10,7 +10,7 @@ class Recipe(models.Model):
     description = models.CharField(max_length=1500)
     pub_date = models.DateTimeField('date published')
     has_ingredients = models.ManyToManyField('Has_Ingredient')
-    has_label = models.ManyToManyField('Has_Tags')
+    has_tags = models.ManyToManyField('Has_Tag')
 
     def __str__(self):
         return self.title
@@ -40,9 +40,9 @@ class Ingredient(models.Model):
         return self.name
 
 
-class Has_Tags(models.Model):
+class Has_Tag(models.Model):
     tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
-    kitch = models.ForeignKey('Recipe', on_delete=models.CASCADE)
+    kitchen = models.ForeignKey('Recipe', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.tag.name

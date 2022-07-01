@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Recipe, Ingredient, Has_Ingredient, Tag, Has_Tags
+from .models import Recipe, Ingredient, Has_Ingredient, Tag, Has_Tag
 
 
 class Has_IngredientInline(admin.TabularInline):
@@ -9,7 +9,7 @@ class Has_IngredientInline(admin.TabularInline):
 
 
 class Has_TagAdmin(admin.TabularInline):
-    model = Has_Tags
+    model = Has_Tag
     extra = 1
 
 
@@ -49,5 +49,5 @@ admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Tag, TagsAdmin)
 admin.site.register(Has_Ingredient)
-admin.site.register(Has_Tags)
+admin.site.register(Has_Tag)
 
