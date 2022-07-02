@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponse
 
-from .models import Recipe, Has_Ingredient, Ingredient, Tag, Has_Tag
+from .models import Recipe, Has_Ingredient, Ingredient, Tag
 
 
 def index(request):
@@ -12,15 +12,17 @@ def index(request):
             tri = request.POST["filterDir"]
             recipes = Recipe.objects.order_by(tri)
         if "filter" in request.POST:
-            q = request.POST['filter']
-            recipes = Recipe.objects.filter(has_label__tag__name__icontains=q).order_by(tri)
+            print(request.POST)
+            print(len(request.POST["filter"]))
+            q = request.POST["filter"]
+            print(q)
+            recipes = Recipe.objects.filter(has_tags__tag__name__iexact=q).values()
         elif "search" in request.POST:
             q = request.POST['search']
             recipes = Recipe.objects.filter(title__icontains=q).order_by(tri)
 
     context = {
         'recipes': recipes,
-        'has_t': Has_Tag.objects.filter(),
         'tags': Tag.objects.all(),
     }
     return render(request, 'recettes/index.html', context)

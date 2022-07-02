@@ -9,8 +9,8 @@ class Recipe(models.Model):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=1500)
     pub_date = models.DateTimeField('date published')
-    has_ingredients = models.ManyToManyField('Has_Ingredient')
-    has_tags = models.ManyToManyField('Has_Tag')
+    has_ingredients = models.ManyToManyField('Has_Ingredient', related_name='recipes')
+    has_tags = models.ManyToManyField('Has_Tag', related_name='recipes')
 
     def __str__(self):
         return self.title

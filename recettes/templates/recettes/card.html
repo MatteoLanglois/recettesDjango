@@ -1,6 +1,7 @@
 <div class="card">
     <h1>{{ recipe.title }}</h1>
-    {{ recipe.has_tags.all }}
+    {{ recipe.has_tags__set }}
+    {{ recipe.has_tags__set.all }}
     {% for tag in recipe.has_tags.all %}
         <div class="chip">
             {{ tag.name }}
