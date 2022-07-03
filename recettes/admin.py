@@ -1,15 +1,15 @@
 from django.contrib import admin
 
-from .models import Recipe, Ingredient, Has_Ingredient, Tag, Has_Tag
+from .models import Recipe, Ingredient, Tag
 
 
-class Has_IngredientInline(admin.TabularInline):
-    model = Has_Ingredient
+class IngredientInline(admin.TabularInline):
+    model = Ingredient
     extra = 1
 
 
-class Has_TagAdmin(admin.TabularInline):
-    model = Has_Tag
+class TagAdmin(admin.TabularInline):
+    model = Tag
     extra = 1
 
 
@@ -24,30 +24,28 @@ class RecipeAdmin(admin.ModelAdmin):
         ('Recette', {'fields': ['title', 'description']}),
         ('Date information', {'fields': ['pub_date']}),
     ]
-    inlines = [Has_IngredientInline, Has_TagAdmin]
+    inlines = [IngredientInline, TagAdmin]
 
 
 class IngredientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'measure')
+    list_display = ('name', 'measure', 'quantity')
     search_fields = ['name']
     empty_value_display = '-empty-'
     fieldsets = [
-        (None, {'fields': ['name', 'measure']}),
+        (None, {'fields': ['name', 'measure', 'quantity']}),
     ]
 
 
 class TagsAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ['name', 'icon']
     search_fields = ['name']
     empty_value_display = '-empty-'
     fieldsets = [
-        (None, {'fields': ['name']}),
+        (None, {'fields': ['name', 'icon']}),
     ]
 
 
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Tag, TagsAdmin)
-admin.site.register(Has_Ingredient)
-admin.site.register(Has_Tag)
 

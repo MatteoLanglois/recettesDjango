@@ -2,12 +2,20 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'recettes/style.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'recettes/color.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'recettes/animation.css' %}">
 <script src="https://kit.fontawesome.com/f0c5800638.js" crossorigin="anonymous"></script>
 
-<h1>{{ recette.title }}</h1>
-<p>{{ recette.description }}</p>
-<ul>
-  {% for ingredient in ing %}
-    <li>{{ ingredient }}</li>
-  {% endfor %}
-</ul>
+
+{% include "./burger.html" %}
+<div class="detail">
+  <h1>{{ recette.title }}</h1>
+  <h2><i class="fa-solid fa-list-ul"></i> Ingrédients :</h2>
+  <ul class="ingredient">
+    {% for ingredient in recette.ingredient_set.all %}
+      <li>{{ ingredient.quantity }} {{ ingredient.measure }} {{ ingredient.name }}</li>
+    {% endfor %}
+  </ul>
+  <h2><i class="fa-solid fa-kitchen-set"></i> Préparation :</h2>
+  <p class="prepa">{{ recette.description }}</p>
+
+</div>

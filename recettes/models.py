@@ -9,8 +9,8 @@ class Recipe(models.Model):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=1500)
     pub_date = models.DateTimeField('date published')
-    has_ingredients = models.ManyToManyField('Has_Ingredient', related_name='recipes')
-    has_tags = models.ManyToManyField('Has_Tag', related_name='recipes')
+    ingredients = models.ManyToManyField('Ingredient', related_name='recipes')
+    tags = models.ManyToManyField('Tag', related_name='recipes')
 
     def __str__(self):
         return self.title
@@ -25,31 +25,20 @@ class Recipe(models.Model):
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 
-class Has_Ingredient(models.Model):
-    quantity = models.IntegerField(default=0)
-    ingredient = models.ManyToManyField('Ingredient')
-    kitchen = models.ForeignKey('Recipe', on_delete=models.CASCADE)
-    pass
-
-
 class Ingredient(models.Model):
     name = models.CharField(max_length=150)
-    measure = models.CharField(max_length=15, default="")
+    measure = models.CharField(max_length=30, default="nb")
+    quantity = models.IntegerField(default=0)
+    recipes_id = models.ForeignKey('Recipe', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
 
-class Has_Tag(models.Model):
-    tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
-    kitchen = models.ForeignKey('Recipe', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.tag.name
-
-
 class Tag(models.Model):
     name = models.CharField(max_length=150)
+    recipes_id = models.ForeignKey('Recipe', on_delete=models.CASCADE)
+    icon = models.CharField(max_length=150, default="fa-solid fa-utensils")
 
     def __str__(self):
         return self.name

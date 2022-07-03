@@ -1,15 +1,8 @@
 <div class="card">
     <h1>{{ recipe.title }}</h1>
-    {{ recipe.has_tags__set }}
-    {{ recipe.has_tags__set.all }}
-    {% for tag in recipe.has_tags.all %}
+    {% for tag in recipe.tag_set.all %}
         <div class="chip">
-            {{ tag.name }}
-        </div>
-    {% endfor %}
-    {% for tag in recipe.has_ingredients.all %}
-        <div class="chip">
-            {{ tag.name }}
+            <span><i class="{{ tag.icon }}"></i>{{ tag.name }}</span>
         </div>
     {% endfor %}
     <div class="button_zone">
@@ -18,3 +11,4 @@
         </a>
     </div>
 </div>
+

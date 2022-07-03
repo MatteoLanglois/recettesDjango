@@ -1,0 +1,10 @@
+<button class="sandwich" onclick="document.getElementById('bar').style.display = 'block'"><i class="fa-solid fa-bars"></i></button>
+
+<nav class="navbar" id="bar">
+    <button class="sandwich close" onclick="document.getElementById('bar').style.display = 'none'"><i class="fa-solid fa-times"></i></button>
+    <ul>
+        <li><a href="{% url 'recettes:index' %}"><i class="fa-solid fa-house"></i>Accueil</a></li>
+        <li><a href="{% url 'admin:index' %}"><i class="fa-solid fa-plus"></i>Ajouter une recette</a></li>
+        <li><a href=""><i class="fa-solid fa-message"></i>A propos</a></li>
+    </ul>
+</nav>
