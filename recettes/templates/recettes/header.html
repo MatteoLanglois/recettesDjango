@@ -21,12 +21,12 @@
                 </div>
             {% endfor %}
         </div>
-        <input type="submit" value="Filtrer" class="optionSubmit">
+        <button type="submit" class="btn-grad">Filtrer</button>
     </form>
     <form class="search" action="{% url 'recettes:index' %}" method="post" id="search">
         {% csrf_token %}
         <input type="text" name="search" placeholder="Rechercher une recette" class="optionSearch">
-        <button type="submit" class="optionSubmit"><i class="fa-solid fa-search"></i></button>
+        <button type="submit" class="btn-grad"><i class="fa-solid fa-search"></i></button>
     </form>
     <form class="search" action="{% url 'recettes:index' %}" method="post" id="sorting">
         {% csrf_token %}
@@ -34,6 +34,6 @@
             <option value="pub_date">Par la date de publication</option>
             <option value="title">Par nom</option>
         </select>
-        <input type="submit" value="Trier" class="optionSubmit">
+        <button type="submit" class="btn-grad">Trier</button>
     </form>
 </div>

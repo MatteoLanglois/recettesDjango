@@ -30,3 +30,7 @@ def detail(request, recette_id):
         'recette': recette,
     })
 
+def about(request):
+    return render(request, 'recettes/about.html',{
+        'recettes': Recipe.objects.all(),
+    } )
