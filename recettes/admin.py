@@ -28,11 +28,10 @@ class RecipeAdmin(admin.ModelAdmin):
 
 
 class IngredientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'measure', 'quantity')
     search_fields = ['name']
     empty_value_display = '-empty-'
     fieldsets = [
-        (None, {'fields': ['name', 'measure', 'quantity']}),
+        (None, {'fields': ['name']}),
     ]
 
 

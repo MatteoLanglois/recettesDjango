@@ -311,3 +311,75 @@ header {
 .about h3 i {
     font-size: 1.5em;
 }
+
+.form-add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 300px;
+    width: auto;
+    height: 75vh;
+    padding: 15px;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.form-add input {
+    width: 90%;
+    height: 50px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.3em;
+    font-family: 'Glicker', sans-serif;
+}
+
+.form-add textarea {
+    width: 90%;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.3em;
+    resize: none;
+    font-family: 'Glicker', sans-serif;
+}
+
+.form-del button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    color: black;
+    width: 50px;
+    height: 50px;
+    transition: color 300ms ease-in-out;
+}
+
+.form-del button:hover {
+    color: red;
+}

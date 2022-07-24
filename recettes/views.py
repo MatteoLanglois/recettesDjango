@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponse
-
+from django.utils import timezone
 from .models import Recipe, Ingredient, Tag
-
+from django.shortcuts import redirect
 
 def index(request):
     tri = "title"
@@ -25,12 +25,35 @@ def index(request):
 
 
 def detail(request, recette_id):
+    if request.POST:
+        r = get_object_or_404(Recipe, pk=recette_id)
+        r.delete()
+        return redirect('/recettes/')
     recette = Recipe.objects.get(pk=recette_id)
     return render(request, 'recettes/detail.html', {
         'recette': recette,
     })
 
+
 def about(request):
-    return render(request, 'recettes/about.html',{
+    return render(request, 'recettes/about.html', {
         'recettes': Recipe.objects.all(),
-    } )
+    })
+
+
+def add(request):
+    if request.POST:
+        ingredients = request.POST['ingredients'].split(',')
+        tags = request.POST['tags'].split(',')
+        r = Recipe.objects.create(
+            title=request.POST['title'],
+            description=request.POST['description'],
+            pub_date=timezone.now(),
+        )
+        r.ingredients.set(Ingredient.objects.create(name=I, recipes_id=r) for I in ingredients)
+        r.tags.set(Tag.objects.create(name=T, icon="fa-solid fa-utensils", recipes_id=r) for T in tags)
+        return redirect('/recettes/')
+    return render(request, 'recettes/add.html', {
+        'ingredients': Ingredient.objects.all(),
+        'tags': Tag.objects.all(),
+    })

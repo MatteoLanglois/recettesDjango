@@ -1,4 +1,32 @@
 {% include './header.html' %}
+{% include './burger.html' %}
+
+<div class="option">
+    <form class="filtering" action="{% url 'recettes:index' %}" method="post" id="FilterForm">
+    {% csrf_token %}
+        <div class="checkFilter">
+            {% for tag in tags %}
+                <div class="chip">
+                    <input type="checkbox" name="filter" value="{{ tag }}" class="optionCheck">{{ tag }}
+                </div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn-grad">Filtrer</button>
+    </form>
+    <form class="search" action="{% url 'recettes:index' %}" method="post" id="search">
+        {% csrf_token %}
+        <input type="text" name="search" placeholder="Rechercher une recette" class="optionSearch">
+        <button type="submit" class="btn-grad"><i class="fa-solid fa-search"></i></button>
+    </form>
+    <form class="search" action="{% url 'recettes:index' %}" method="post" id="sorting">
+        {% csrf_token %}
+        <select name="filterDir" class="optionSelect">
+            <option value="pub_date">Par la date de publication</option>
+            <option value="title">Par nom</option>
+        </select>
+        <button type="submit" class="btn-grad">Trier</button>
+    </form>
+</div>
 
 <div class="cards">
 {% if recipes %}

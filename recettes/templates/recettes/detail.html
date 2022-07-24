@@ -8,6 +8,13 @@
 
 {% include "./burger.html" %}
 <div class="detail">
+  <form action="{% url 'recettes:detail' recette.id %}" method="post" class="form-del">
+    {% csrf_token %}
+    <button class="delete" type="submit">
+    <i class="fas fa-trash-alt"></i>
+  </button>
+  </form>
+
   <h1>{{ recette.title }}</h1>
   <h2><i class="fa-solid fa-list-ul"></i> Ingrédients :</h2>
   <ul class="ingredient">

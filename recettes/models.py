@@ -26,9 +26,7 @@ class Recipe(models.Model):
 
 
 class Ingredient(models.Model):
-    name = models.CharField(max_length=150)
-    measure = models.CharField(max_length=30, default="nb")
-    quantity = models.IntegerField(default=0)
+    name = models.CharField(max_length=300)
     recipes_id = models.ForeignKey('Recipe', on_delete=models.CASCADE)
 
     def __str__(self):

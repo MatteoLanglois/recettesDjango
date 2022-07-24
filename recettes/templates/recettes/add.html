@@ -1,0 +1,30 @@
+{% include './header.html' %}
+{% include './burger.html' %}
+
+<form action="{% url 'recettes:add' %}" method="post" class="form-add">
+    {% csrf_token %}
+    <div class="row">
+        <h1>Ajouter une recette</h1>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    </div>
+    <div class="row">
+        <div class="column">
+            <label for="title"><h2>Titre</h2></label>
+            <input type="text" name="title" id="title" value="{{ title }}" placeholder="Donner le nom de la recette">
+
+            <label for="description"><h2>Description</h2></label>
+            <textarea name="description" id="description" cols="50" rows="10" placeholder="Donner la préparation de la recette"></textarea>
+        </div>
+        <div class="column">
+            <label for="ingredients"><h2>Ingrédients</h2></label>
+            <textarea name="ingredients" id="ingredients" cols="40" rows="5" placeholder="Lister les ingrédients en les séparant par des virgules"></textarea>
+
+            <label for="tags"><h2>Mots clés</h2></label>
+            <textarea name="tags" id="tags" cols="40" rows="5" placeholder="Lister les mots clés en les séparant par des virgules"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" class="btn-grad">Ajouter</button>
+    </div>
+
+</form>
